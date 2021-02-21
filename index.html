@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box-wrapper {
+      width: 800px;
+      height: 200px;
+    }
+
+    .box {
+      float: left;
+      width: 200px;
+      height: 200px;
+      line-height: 200px;
+      text-align: center;
+      font-size: 28px;
+      color: #ffffff;
+    }
+
+    .box1 {
+      background-color: green;
+    }
+    .box2 {
+      background-color: orange;
+    }
+    .box3 {
+      background-color: red;
+    }
+    .box4 {
+      background-color: blue;
+    }
+
+    button {
+      width: 100px;
+      height: 43px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="box-wrapper">
+      <div class="box box1" v-if="boxShow1">box1</div>
+      <div class="box box2" v-show="boxShow2">box2</div>
+      <div class="box box3" v-if="boxShow3">box3</div>
+      <div class="box box4" v-show="boxShow4">box4</div>
+    </div>
+
+    <button @click="showBox1">box1</button>
+    <button @click="showBox2">box2</button>
+    <button @click="showBox3">box3</button>
+    <button @click="showBox4">box4</button>
+  </div>
+
+  <!-- <script src="myvue_proxy.js"></script> -->
+  <script src="myvue_defineProperty.js"></script>
+  <script>
+    new MyVue({
+      el: "#app",
+      data: {
+        boxShow1: false,
+        boxShow2: false,
+        boxShow3: false,
+        boxShow4: false
+      },
+      methods: {
+        showBox1() {
+          // 使用defineProperty
+          this.boxShow1 = !this.boxShow1;
+          // 使用proxy
+          // this.data.boxShow1 = !this.boxShow1;
+        },
+        showBox2() {
+          // 使用defineProperty
+          this.boxShow2 = !this.boxShow2;
+          // 使用proxy
+          // this.data.boxShow2 = !this.boxShow2;
+        },
+        showBox3() {
+          // 使用defineProperty
+          this.boxShow3 = !this.boxShow3;
+          // 使用proxy
+          // this.data.boxShow3 = !this.boxShow3;
+        },
+        showBox4() {
+          // 使用defineProperty
+          this.boxShow4 = !this.boxShow4;
+          // 使用proxy
+          // this.data.boxShow4 = !this.boxShow4;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
